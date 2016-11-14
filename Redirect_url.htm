@@ -1,0 +1,26 @@
+<html>
+<body>
+<script type='text/javascript'>
+window.onload= function()
+{
+var oTxt = document.getElementById('txt1');
+var oBtn = document.getElementById('btn1');
+var occ = document.getElementById('cc');
+
+
+oBtn.onclick = function()
+{
+var str1=occ.value;
+var url = 'http://www.google.com'
+
+str1  = str1.replace(/:/g,'=')
+str1 = url+str1
+
+
+//str1 = str1.replace(':','=');
+//window.alert(str1)
+javascript:window.open(str1);
+}
+
+
+}
