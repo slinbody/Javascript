@@ -4,37 +4,36 @@
 <script type='text/javascript'>
 window.onload= function()
 {
-var oTxt = document.getElementById('txt1');
-var oBtn = document.getElementById('btn1');
-var occ = document.getElementById('cc');
+  var oTxt = document.getElementById('txt1');
+  var oBtn = document.getElementById('btn1');
+  var oT1 = document.getElementById('txt1');
 
+  oT1.ondblclick = function()
+  {
+    oT1.value='';
+  }
 
-oBtn.onclick = function()
-{
-var str1=occ.value;
-var url = 'http://www.google.com'
+  oBtn.onclick = function()
+  {
+    var str1=oT1.value;
+    var url = 'http://www.google.com?subfunc=net_setting&apply=wireless&type=get_ip'
 
-str1  = str1.replace(/:/g,'=')
-str1 = url+str1
+    str1  = str1.replace(/:/g,'=')
+    str1 = url+str1
+    javascript:window.open(str1);
+  }
 
-
-//str1 = str1.replace(':','=');
-//window.alert(str1)
-javascript:window.open(str1);
-}
-
-
-}
+} // end of window onload
 
 </script>
-<textarea id='cc' style="width:400px;height:200px;font-size:20px;">
-
+<textarea id='txt1' style="width:400px;height:200px;font-size:20px;">
+your default text
 </textarea>
 <input type="button" value="Go to Google"  /><br>
 
 
 <input type='text' id='txt1' >
-<input type='button' id='btn1' value="Go"style="background-color:lightgreen" ><br>
+<input type='button' id='btn1' value="Go"style="background-color:lightgreen;height:30px;width:60px" ><br>
 
 
 <a href="#" onclick="window.open(' http://tw.yahoo.com ', 'Yahoo', config='height=500,width=500');">開新視窗</a>
