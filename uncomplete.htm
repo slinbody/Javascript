@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<body>
+<script type='text/javascript'>
+
+window.onload= function()
+{
+
+var oTxt1=document.getElementById('txt1');
+var oBt1=document.getElementById('bt1');
+var oBk1=document.getElementById('block1');
+
+oBt1.onclick=function() {
+    var x =oTxt1.value;
+
+    x=parseInt(x) % 2;
+
+    oBk1.innerHTML=x;
+
+    if (x==0) {
+        oBk1.innerHTML="HI";
+        oBk1.style.backgroundColor='red';
+    }
+    else {
+        oBk1.innerHTML="NO";
+        oBk1.style.backgroundColor='green';
+    }
+}
+
+oTxt1.onkeypress=function() {
+    alter('HI');
+}
+
+} // end of window onload
+</script>
+<input type="text" value="" id='txt1' /><br>
+<input type="button" value="" id='bt1' style="height:30px;width:60px;" /><br>
+<p id='block1'>sss </p>
+
+</body>
+</html>
