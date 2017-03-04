@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head>
+<body>
+<script type='text/javascript'>
+// random choose Two Consul
+var Gen_status={'G1':0, 'G2':0, 'G3':0, 'G4':0, 'G5':0, 'G6':0,'G7':0,'G8':0};
+
+
+function changFont(x, y){
+    Gen_status[y] = (Gen_status[y] +1) % 2;
+    if ( Gen_status[y] == 1 ) {
+        document.getElementById(y).style.textDecoration = x;
+    }
+    else { 
+        document.getElementById(y).style.textDecoration = 'none';
+    }
+//	this.style.textDecoration = x;
+}
+
+function Gen_Gen() {
+    document.getElementById('result').innerHTML = ''
+    var Gen_tmp = [];  // item in array is Name of Consul
+    for(var key in Gen_status) {
+        if ( Gen_status[key] == 0) {
+            Gen_tmp.push(document.getElementById(key).textContent)
+//            document.getElementById('result').innerHTML += "<br> "+document.getElementById(key).textContent;
+        }
+    }
+
+    if (Gen_tmp.length < 2) {
+        document.getElementById('result').innerHTML = '執政官只少要有兩位'
+        return false;
+    }
+
+
+    var tmp_index;
+    for(var i=0; i<2;i++) {
+        tmp_index = Math.floor(Math.random()*Gen_tmp.length);
+    
+        document.getElementById('result').innerHTML += Gen_tmp[tmp_index]+"<br>";
+        Gen_tmp.splice(Number(tmp_index), 1);
+
+    }
+
+}
+window.onload= function()
+{
+
+} // end of window onload
+</script>
+
+<p id='block1' style="font-size:300%;">羅馬執政官選擇</p>
+
+<p id='G1' style="font-size:300%;" onClick="changFont('line-through','G1');">T. LONGUS </p> 
+<p id='G2' style="font-size:300%;" onClick="changFont('line-through','G2');">FABIUS </p>
+<p id='G3' style="font-size:300%;" onClick="changFont('line-through','G3');">G. NERO </p>
+<p id='G4' style="font-size:300%;" onClick="changFont('line-through','G4');">FLAMINUSS </p>
+<p id='G5' style="font-size:300%;" onClick="changFont('line-through','G5');">P. SCIPIO </p>
+<p id='G6' style="font-size:300%;" onClick="changFont('line-through','G6');">VARRO </p>
+<p id='G7' style="font-size:300%;" onClick="changFont('line-through','G7');">MARCELLUS </p>
+<p id='G8' style="font-size:300%;" onClick="changFont('line-through','G8');">A. PAULUS</p>
+<input type='button' value="GO" id='bt1' style="height:30px;width:60px;" onClick="Gen_Gen();" />
+<p id='result' style="font-size:300%;"><p>
+</body>
+</html>
