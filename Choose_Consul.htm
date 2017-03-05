@@ -2,10 +2,34 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style>
+.button {
+  display: inline-block;
+  padding: 15px 25px;
+  font-size: 30px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background-color: #4CAF50;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px #999;
+}
+
+.button:hover {background-color: #3e8e41}
+
+.button:active {
+  background-color: #3e8e41;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+</style>
+
 </head>
 <body>
 <script type='text/javascript'>
-// random choose Two Consul
 var Gen_status={'G1':0, 'G2':0, 'G3':0, 'G4':0, 'G5':0, 'G6':0,'G7':0,'G8':0};
 
 
@@ -52,17 +76,24 @@ window.onload= function()
 } // end of window onload
 </script>
 
+<div id="DIV1" style="float:left; width:30%;">
 <p id='block1' style="font-size:300%;">羅馬執政官選擇</p>
 
-<p id='G1' style="font-size:300%;" onClick="changFont('line-through','G1');">T. LONGUS </p> 
-<p id='G2' style="font-size:300%;" onClick="changFont('line-through','G2');">FABIUS </p>
-<p id='G3' style="font-size:300%;" onClick="changFont('line-through','G3');">G. NERO </p>
-<p id='G4' style="font-size:300%;" onClick="changFont('line-through','G4');">FLAMINUSS </p>
-<p id='G5' style="font-size:300%;" onClick="changFont('line-through','G5');">P. SCIPIO </p>
-<p id='G6' style="font-size:300%;" onClick="changFont('line-through','G6');">VARRO </p>
-<p id='G7' style="font-size:300%;" onClick="changFont('line-through','G7');">MARCELLUS </p>
-<p id='G8' style="font-size:300%;" onClick="changFont('line-through','G8');">A. PAULUS</p>
-<input type='button' value="GO" id='bt1' style="height:30px;width:60px;" onClick="Gen_Gen();" />
+<p id='G1' style="font-size:200%;" onClick="changFont('line-through','G1');">T. LONGUS </p> 
+<p id='G2' style="font-size:200%;" onClick="changFont('line-through','G2');">FABIUS </p>
+<p id='G3' style="font-size:200%;" onClick="changFont('line-through','G3');">G. NERO </p>
+<p id='G4' style="font-size:200%;" onClick="changFont('line-through','G4');">FLAMINUSS </p>
+<p id='G5' style="font-size:200%;" onClick="changFont('line-through','G5');">P. SCIPIO </p>
+<p id='G6' style="font-size:200%;" onClick="changFont('line-through','G6');">VARRO </p>
+<p id='G7' style="font-size:200%;" onClick="changFont('line-through','G7');">MARCELLUS </p>
+<p id='G8' style="font-size:200%;" onClick="changFont('line-through','G8');">A. PAULUS</p>
+<input class='button' type='button' value="GO" id='bt1' onClick="Gen_Gen();" />
+</div>
+<div id="DIV2" style="float:left;width:50%;text-align:center;height: 550px; display: flex; align-items: center;">
+
 <p id='result' style="font-size:300%;"><p>
+
+</div>
+<div style="clear:both;"></div>
 </body>
 </html>
