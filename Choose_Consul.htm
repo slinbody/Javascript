@@ -24,6 +24,7 @@
   background-color: #3e8e41;
   box-shadow: 0 5px #666;
   transform: translateY(4px);
+
 }
 </style>
 
@@ -31,6 +32,16 @@
 <body>
 <script type='text/javascript'>
 var Gen_status={'G1':0, 'G2':0, 'G3':0, 'G4':0, 'G5':0, 'G6':0,'G7':0,'G8':0};
+var ability={
+'G1':"G1",
+'G2':"G2",
+'G3':"G3",
+'G4':"G4",
+'G5':"G5",
+'G6':"G6",
+'G7':"G7",
+'G8':"G8"
+};
 
 
 function changFont(x, y){
@@ -44,18 +55,44 @@ function changFont(x, y){
 //	this.style.textDecoration = x;
 }
 
+
+var bar = 0;
+
+function progress() {
+
+     bar = bar + Math.floor(Math.random()*10);
+
+     document.getElementById('result').innerHTML = "<p style='font-size:100%;text-align:left'>"+bar + "%<br></p>"+Array(bar).join("|");
+
+     if (bar <= 100) {  
+         console.log('|'*bar);      
+         meter1 = setTimeout(progress, 70);
+
+     } 
+     else {
+        clearTimeout(meter1);
+        bar=0;
+        Gen_Gen();
+     }
+
+}
+
+
 function Gen_Gen() {
     document.getElementById('result').innerHTML = ''
+    
+
     var Gen_tmp = [];  // item in array is Name of Consul
     for(var key in Gen_status) {
         if ( Gen_status[key] == 0) {
-            Gen_tmp.push(document.getElementById(key).textContent)
+//            Gen_tmp.push(document.getElementById(key).textContent);
+           Gen_tmp.push(document.getElementById(key).textContent+"<br>"+"<p style='font-size:50%;'>"+document.getElementById(key).getAttribute('ability')+"</p>");
 //            document.getElementById('result').innerHTML += "<br> "+document.getElementById(key).textContent;
         }
     }
 
     if (Gen_tmp.length < 2) {
-        document.getElementById('result').innerHTML = '執政官只少要有兩位'
+        document.getElementById('result').innerHTML = '執政官至少要有兩位'
         return false;
     }
 
@@ -63,6 +100,7 @@ function Gen_Gen() {
     var tmp_index;
     for(var i=0; i<2;i++) {
         tmp_index = Math.floor(Math.random()*Gen_tmp.length);
+//        var a = document.getElementById(Gen_tmp[tmp_index]);
     
         document.getElementById('result').innerHTML += Gen_tmp[tmp_index]+"<br>";
         Gen_tmp.splice(Number(tmp_index), 1);
@@ -79,21 +117,30 @@ window.onload= function()
 <div id="DIV1" style="float:left; width:30%;">
 <p id='block1' style="font-size:300%;">羅馬執政官選擇</p>
 
-<p id='G1' style="font-size:200%;" onClick="changFont('line-through','G1');">T. LONGUS </p> 
-<p id='G2' style="font-size:200%;" onClick="changFont('line-through','G2');">FABIUS </p>
-<p id='G3' style="font-size:200%;" onClick="changFont('line-through','G3');">G. NERO </p>
-<p id='G4' style="font-size:200%;" onClick="changFont('line-through','G4');">FLAMINUSS </p>
-<p id='G5' style="font-size:200%;" onClick="changFont('line-through','G5');">P. SCIPIO </p>
-<p id='G6' style="font-size:200%;" onClick="changFont('line-through','G6');">VARRO </p>
-<p id='G7' style="font-size:200%;" onClick="changFont('line-through','G7');">MARCELLUS </p>
-<p id='G8' style="font-size:200%;" onClick="changFont('line-through','G8');">A. PAULUS</p>
-<input class='button' type='button' value="GO" id='bt1' onClick="Gen_Gen();" />
+<p id='G1' style="font-size:200%;" onClick="changFont('line-through','G1');" ability="戰鬥初始時(第一張戰鬥牌打出前)<br>若是攻擊方，<br>攻守交換決定時，擲骰點數 1-2 時可變攻擊方<br>可使用此能力後棄戰">T. LONGUS </p> 
+
+<p id='G2' style="font-size:200%;" onClick="changFont('line-through','G2');" ability="擲骰點數 1-5 時，棄戰成功<br>不能離開義大利<br>可以搭船">FABIUS </p>
+
+<p id='G3' style="font-size:200%;" onClick="changFont('line-through','G3');" ability="用戰役卡移動時，可以走六步">G. NERO </p>
+
+<p id='G4' style="font-size:200%;" onClick="changFont('line-through','G4');" ability="當敵方避戰成功後，進行追擊(pursue)時<br>點數1-4即算追擊成功<br>使用此能力後，無法執行棄戰">FLAMINIUS </p>
+
+<p id='G5' style="font-size:200%;" onClick="changFont('line-through','G5');" ability="當在西班牙時，智力為 2">P. SCIPIO </p>
+
+<p id='G6' style="font-size:200%;" onClick="changFont('line-through','G6');" ability="攔截時，點數1-4即算攔截成功">VARRO </p>
+
+<p id='G7' style="font-size:200%;" onClick="changFont('line-through','G7');" ability="用戰役卡進行攻城時，骰子點數+1修正<br>征服土著時無修正">MARCELLUS </p>
+
+<p id='G8' style="font-size:200%;" onClick="changFont('line-through','G8');" ability="戰鬥初始時(第一張戰鬥牌打出前)<br>若是防守方，<br>攻守交換決定時，擲骰點數 1-3 時可變攻擊方<br>可使用此能力後棄戰">A. PAULUS</p>
+
+<input class='button' type='button' value="GO" id='bt1' onClick="progress();" />
 </div>
-<div id="DIV2" style="float:left;width:50%;text-align:center;height: 550px; display: flex; align-items: center;">
+<div id="DIV2" style="float:left;width:50%;text-align:center;height: 600px; display: flex; align-items: center;">
 
 <p id='result' style="font-size:300%;"><p>
 
 </div>
 <div style="clear:both;"></div>
+
 </body>
 </html>
