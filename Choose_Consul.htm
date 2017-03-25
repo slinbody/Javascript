@@ -62,10 +62,10 @@ function progress() {
 
      bar = bar + Math.floor(Math.random()*10);
 
-     document.getElementById('result').innerHTML = "<p style='font-size:100%;text-align:left'>"+bar + "%<br></p>"+Array(bar).join("|");
+     document.getElementById('result').innerHTML = "<p style='font-size:50%;text-align:left'>"+bar + "%<br>"+Array(bar).join("|")+"</p>";
 
      if (bar <= 100) {  
-         console.log('|'*bar);      
+//         console.log('|'*bar);      
          meter1 = setTimeout(progress, 70);
 
      } 
